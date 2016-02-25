@@ -6,9 +6,15 @@ module RuboCop
   module PathUtil
     module_function
 
+    def to_utf_8(path)
+      path.dup.force_encoding('utf-8')
+    end
+
     def relative_path(path, base_dir = Dir.pwd)
       # Optimization for the common case where path begins with the base
       # dir. Just cut off the first part.
+      path = to_utf_8(path)
+      base_dir = to_utf_8(base_dir)
       return path[(base_dir.length + 1)..-1] if path.start_with?(base_dir)
 
       path_name = Pathname.new(File.expand_path(path))
@@ -58,7 +64,7 @@ module RuboCop
 
     # Returns true for an absolute Unix or Windows path.
     def absolute?(path)
-      path =~ %r{\A([A-Z]:)?/}
+      to_utf_8(path) =~ %r{\A([A-Z]:)?/}
     end
   end
 end
