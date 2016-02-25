@@ -128,7 +128,7 @@ module RuboCop
         end
 
         def constant_name?(method_name)
-          method_name.match(/^[A-Z]/)
+          method_name.match(/^[#{UPPERCASE_LETTERS}]/)
         end
 
         def allow_self(node)

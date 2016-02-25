@@ -3,6 +3,10 @@
 
 module RuboCop
   module Cop
+    LOWERCASE_LETTERS = 'a-zа-я'
+    UPPERCASE_LETTERS = 'A-ZА-Я'
+    MIXEDCASE_LETTERS = LOWERCASE_LETTERS + UPPERCASE_LETTERS
+
     class AmbiguousCopName < RuboCop::Error; end
 
     # Store for all cops with helper functions

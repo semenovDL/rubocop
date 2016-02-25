@@ -29,7 +29,7 @@ module RuboCop
         end
 
         def allowed_name(method_name)
-          method_name.match(/^[A-Z]/)
+          method_name.match(/^[#{UPPERCASE_LETTERS}]/)
         end
 
         def autocorrect(node)

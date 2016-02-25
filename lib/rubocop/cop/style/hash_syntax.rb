@@ -103,7 +103,7 @@ module RuboCop
           sym_name.sub!(/\A:/, '')
 
           # Most hash keys can be matched against a simple regex.
-          return true if sym_name =~ /\A[_a-z]\w*[?!]?\z/i
+          return true if sym_name =~ /\A[_#{LOWERCASE_LETTERS}]\w*[?!]?\z/i
 
           # For more complicated hash keys, let the parser validate the syntax.
           parse("{ #{sym_name}: :foo }").valid_syntax?

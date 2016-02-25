@@ -15,7 +15,7 @@ module RuboCop
                             'called `%s`.'.freeze
         MSG_REGEX = '`%s` should match `%s`.'.freeze
 
-        SNAKE_CASE = /^[\da-z_]+$/
+        SNAKE_CASE = /^[\d#{LOWERCASE_LETTERS}_]+$/
 
         def investigate(processed_source)
           file_path = processed_source.buffer.name

@@ -15,7 +15,7 @@ module RuboCop
           _receiver, method_name, *args = *node
 
           # methods starting with a capital letter should be skipped
-          return if method_name =~ /\A[A-Z]/
+          return if method_name =~ /\A[#{UPPERCASE_LETTERS}]/
           return unless args.empty? && node.loc.begin
           return if same_name_assignment?(node)
           return if lambda_call_syntax?(node)
